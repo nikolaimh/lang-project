@@ -6,12 +6,12 @@ This project reused large parts of the code I wrote for assignment 4, and I rema
 The Goodreads book description dataset was found here, uploaded to the open database commons by Kaggle user randomarnab who scraped it from the Goodreads website. 
 
 ## 2.	Methods
-The main script, book_emotions.py, loads the dataset file, binds it to a dataframe, and ensures that the descriptions are in string format. The file is den preprocessed, keeping only the descriptions written in English before truncating them to fit within the model’s limits. Finally, the descriptions are separated based on the ratings of the corresponding books, sampled, and fed into a text classifier. The results are gathered in a single dataframe for presentation and visualizations, all saved to the out folder.
+The main script, ```book_emotions.py```, loads the dataset file, binds it to a dataframe, and ensures that the descriptions are in string format. The file is den preprocessed, keeping only the descriptions written in English before truncating them to fit within the model’s limits. Finally, the descriptions are separated based on the ratings of the corresponding books, sampled, and fed into a text classifier. The results are gathered in a single dataframe for presentation and visualizations, all saved to the ```out``` folder.
 
 ## 3.	Usage
-The dataset is already present in the data folder, but can be re-downloaded from the link provided in Contributions above. The script will expect the subfolder be named dataset.
+The dataset is already present in the ```data``` folder, but can be re-downloaded from the link provided in Contributions above.
 
-Before running the script, ensure that the current directory is lang-project and execute bash setup.sh from the command line. This will update pip and install the packages noted in requirements.txt. Then, run cd src/ and python book_emotions.py from command line to run the script. By default, the script is set to sample 500 descriptions from each ratings category to compensate for greatly unequal category sizes.
+Before running the script, ensure that the current directory is ```lang-project``` and execute bash ```setup.sh``` from the command line. This will update ```pip``` and install the packages noted in ```requirements.txt```. Then, run ```cd src/``` and ```python book_emotions.py``` from command line to run the script. By default, the script is set to sample 500 descriptions from each ratings category to compensate for greatly unequal category sizes.
 
 ## 4.	Discussion
 This project was initially envisioned quite differently, but constraints of both time, skill, and server time has somewhat reduced the scope and altered the general direction. The original attempt was to train a classifier on literary data, but data labeling and training proved too time-consuming compared to what I had set aside to get it done. As such, this project appears here in diminished form, supported in no small part by pieces of code I had written beforehand.
