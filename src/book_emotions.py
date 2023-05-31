@@ -1,13 +1,12 @@
 # pathing tool
 import os
-os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3" # minimize tensorflow messages
+###os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3" # minimize tensorflow messages
 # dataframe wrangling
 import pandas as pd
 # randomizing dataframe
 import numpy as np
 # classifier used
 from transformers import pipeline
-###import tensorflow
 # for visualisations
 from matplotlib import pyplot as plt
 
@@ -16,15 +15,17 @@ def load_data():
     # reading input data
     data_path = os.path.join("..","data","Best_Books_Ever.csv")
     book_df = pd.read_csv(data_path)
-
-    # making sure the desc is a string
-    book_df["description"] = book_df["description"].apply(lambda x: str(x))
     return book_df
 
+# cleaning and preprocessing description data
 def preprocess(book_df):
+    # making sure the desc is a string
+    book_df["description"] = book_df["description"].apply(lambda x: str(x))
+
     # ensuring english-only descriptions
     book_df = book_df[book_df["language"] == "English"]
     book_df = book_df.reset_index(drop=True)
+
     # making list from df
     book_list = list(book_df["description"])
 
@@ -208,12 +209,13 @@ def main():
     # load all data and sort according to rating
     print("Loading data ...")
     book_dataframe = load_data()
-    # preprocess data
+    # clean and preprocess data
+    print("Preprocessing data ...")
     under_four, rated_four, rated_five = preprocess(book_dataframe)
     # run descriptions through defined classifier, outputting most likely emotions for each string
     emotion_cls = set_cls()
-    print("   ")
-    print("Processing text ...")
+    print("   ") # to separate classification messages from print statement below
+    print("Analysing text ...")
     all_em, under_four_em, rated_four_em, rated_five_em = analyse_data(emotion_cls, under_four, rated_four, rated_five)
 
     # count emotion instances and make tables from results
